@@ -433,13 +433,14 @@ export function Home() {
                </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
+            {/* Highlighted Scholar */}
+            <div className="mb-8">
                {scholars.filter(s => s.highlight).map((scholar, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="col-span-full bg-[#8C2323] p-12 md:p-16 relative overflow-hidden group shadow-[0_30px_60px_-12px_rgba(140,35,35,0.4)]"
+                    className="bg-[#8C2323] p-12 md:p-16 relative overflow-hidden group shadow-[0_30px_60px_-12px_rgba(140,35,35,0.4)]"
                   >
                      <div className="relative z-10 flex flex-col xl:flex-row gap-16 items-center">
                         <div className="flex-1 space-y-10">
@@ -462,7 +463,7 @@ export function Home() {
                         <div className="w-full xl:w-2/3 bg-white/5 backdrop-blur-md border border-white/20 p-8 md:p-12">
                            <div className="flex items-center justify-between mb-8 border-b border-white/20 pb-4">
                               <h4 className="text-white font-bold text-xl uppercase tracking-widest font-serif">Representative Translations</h4>
-                              <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.3em]">Data Source: Global Academic Database</span>
+                              <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.3em] hidden sm:block">Data Source: Global Academic Database</span>
                            </div>
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                               {scholar.works.map((work, widx) => (
@@ -477,8 +478,8 @@ export function Home() {
                                        <p className="text-white/30 text-[10px] uppercase tracking-widest mb-4">{work.publisher}</p>
                                     </div>
                                     <div className="pt-4 border-t border-white/10 mt-2">
-                                       <p className="text-xs font-bold text-white/80 flex items-center gap-2">
-                                          <CheckCircle2 className="w-3 h-3 text-white" /> {work.feature}
+                                       <p className="text-xs font-bold text-white/80 flex items-start gap-2">
+                                          <CheckCircle2 className="w-4 h-4 text-white shrink-0 mt-0.5" /> <span className="leading-tight">{work.feature}</span>
                                        </p>
                                     </div>
                                  </motion.div>
@@ -492,25 +493,40 @@ export function Home() {
                      </div>
                   </motion.div>
                ))}
-               
+            </div>
+
+            {/* Other Scholars Collection */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
                {scholars.filter(s => !s.highlight).map((scholar, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="bg-white/5 border border-white/10 p-10 hover:border-[#8C2323]/50 transition-all group"
+                    className="bg-white/5 border border-white/10 p-8 hover:border-[#8C2323]/50 transition-all group flex flex-col h-full"
                   >
-                     <h4 className="text-xl font-bold mb-6 font-serif group-hover:text-[#8C2323] transition-colors">{scholar.name}</h4>
-                     <div className="space-y-4 mb-8">
+                     <div className="mb-6">
+                        <h4 className="text-2xl font-bold font-serif text-white group-hover:text-[#8C2323] transition-colors mb-2">{scholar.name}</h4>
+                        <p className="text-[#8C2323] text-xs font-bold tracking-widest uppercase">{scholar.impact}</p>
+                     </div>
+                     <div className="space-y-4 flex-1 flex flex-col">
                         {scholar.works.map((work, widx) => (
-                           <div key={widx}>
-                              <p className="text-sm font-medium text-white/80">{work.title}</p>
-                              <p className="text-[10px] text-white/30 uppercase tracking-widest">{work.publisher}</p>
+                           <div key={widx} className="bg-white/5 p-6 border-l-4 border-white/20 group-hover:border-[#8C2323]/50 transition-colors flex-1 flex flex-col">
+                              <div className="flex-1 mb-4">
+                                 <h5 className="text-white font-bold text-lg mb-1 font-serif">{work.title}</h5>
+                                 <p className="text-white/60 text-sm italic mb-4">{work.enTitle === "Various Papers" ? "다양한 논문" : work.enTitle}</p>
+                                 <div className="flex items-center gap-2 text-white/30 text-[10px] uppercase tracking-widest font-bold">
+                                    <BookOpen className="w-3 h-3" /> {work.publisher}
+                                 </div>
+                              </div>
+                              <div className="pt-4 border-t border-white/10 mt-auto">
+                                 <p className="text-xs font-bold text-white/80 flex items-start gap-2">
+                                    <CheckCircle2 className="w-4 h-4 text-[#8C2323] shrink-0 mt-0.5" /> <span className="leading-tight">{work.feature}</span>
+                                 </p>
+                              </div>
                            </div>
                         ))}
                      </div>
-                     <p className="text-xs text-[#8C2323] font-bold tracking-widest uppercase">{scholar.impact}</p>
                   </motion.div>
                ))}
             </div>
