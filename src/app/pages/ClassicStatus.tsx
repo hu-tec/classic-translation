@@ -116,7 +116,10 @@ export function ClassicStatus() {
 
         <div className="space-y-32">
           {/* Row 1: Status & Multilingual Grid */}
+          {/* Unified Grid: Status on Left, Others Stacked on Right */}
           <div id="status-main" className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+            
+            {/* Left Column */}
             <div>
               <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
                 <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
@@ -154,88 +157,91 @@ export function ClassicStatus() {
               </div>
             </div>
 
-            {/* Multilingual Status Table */}
-            <div id="multilingual">
-              <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
-                <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
-                  <Languages className="w-5 h-5 -rotate-45" />
-                </div>
-                다국어 번역 현황 (영·중·일)
-              </h4>
-              <div className="overflow-x-auto bg-white border border-gray-100">
-                <table className="w-full border-collapse min-w-[500px]">
-                  <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
-                      <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">고전명</th>
-                      <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">영어</th>
-                      <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">중국어</th>
-                      <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">일본어</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-50">
-                    {multiLangStatus.map((item, i) => (
-                      <tr key={i} className="hover:bg-gray-50 transition-colors">
-                        <td className="py-4 px-4 text-sm font-serif font-bold text-[#1A1A1A]">{item.name}</td>
-                        <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.en}</td>
-                        <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.zh}</td>
-                        <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.jp}</td>
+            {/* Right Column Stack */}
+            <div className="flex flex-col gap-24">
+              
+              {/* Multilingual Status Table */}
+              <div id="multilingual">
+                <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
+                  <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
+                    <Languages className="w-5 h-5 -rotate-45" />
+                  </div>
+                  다국어 번역 현황 (영·중·일)
+                </h4>
+                <div className="overflow-x-auto bg-white border border-gray-100">
+                  <table className="w-full border-collapse min-w-[500px]">
+                    <thead>
+                      <tr className="bg-gray-50 border-b border-gray-100">
+                        <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">고전명</th>
+                        <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">영어</th>
+                        <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">중국어</th>
+                        <th className="py-4 px-4 text-left text-[11px] font-bold uppercase tracking-widest text-gray-400">일본어</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="mt-6 p-6 bg-[#8C2323]/5 border-l-2 border-[#8C2323]">
-                <p className="text-xs text-gray-500 leading-relaxed font-light">
-                  * 조선왕조실록 영어 번역 프로젝트는 2012년 시작되어 현재 진행 중이며, <strong className="text-[#8C2323]">2033년 완역</strong>을 목표로 하고 있습니다.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Row 2: Representatives & Problems */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            {/* Representative Translations Section */}
-            <div id="representatives">
-              <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
-                <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
-                  <Globe className="w-5 h-5 -rotate-45" />
+                    </thead>
+                    <tbody className="divide-y divide-gray-50">
+                      {multiLangStatus.map((item, i) => (
+                        <tr key={i} className="hover:bg-gray-50 transition-colors">
+                          <td className="py-4 px-4 text-sm font-serif font-bold text-[#1A1A1A]">{item.name}</td>
+                          <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.en}</td>
+                          <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.zh}</td>
+                          <td className="py-4 px-4 text-[11px] text-gray-500 font-medium">{item.jp}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
-                다국어 번역 대표 사례
-              </h4>
-              <div className="space-y-6">
-                {representativeTranslations.map((item, idx) => (
-                  <div key={idx} className="p-8 border border-gray-100 bg-white hover:border-[#8C2323]/20 transition-all">
-                    <div className="text-[11px] font-bold text-[#8C2323] uppercase tracking-[0.2em] mb-2">{item.lang}</div>
-                    <div className="text-lg font-serif font-bold text-[#1A1A1A] mb-2">{item.work}</div>
-                    <div className="text-sm text-gray-400 mb-4 font-medium">번역자: {item.scholar}</div>
-                    <p className="text-sm text-gray-600 font-light leading-relaxed">{item.desc}</p>
+                <div className="mt-6 p-6 bg-[#8C2323]/5 border-l-2 border-[#8C2323]">
+                  <p className="text-xs text-gray-500 leading-relaxed font-light">
+                    * 조선왕조실록 영어 번역 프로젝트는 2012년 시작되어 현재 진행 중이며, <strong className="text-[#8C2323]">2033년 완역</strong>을 목표로 하고 있습니다.
+                  </p>
+                </div>
+              </div>
+
+              {/* Representative Translations Section */}
+              <div id="representatives">
+                <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
+                  <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
+                    <Globe className="w-5 h-5 -rotate-45" />
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div id="challenges">
-              <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
-                <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
-                  <AlertCircle className="w-5 h-5 -rotate-45" />
-                </div>
-                해결해야 할 도전 과제
-              </h4>
-              <div className="space-y-4">
-                {problems.map((problem, index) => (
-                  <div key={index} className="p-8 border border-gray-100 bg-white group hover:border-[#8C2323]/30 transition-all">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-10 h-10 bg-gray-50 flex items-center justify-center group-hover:bg-[#8C2323] group-hover:text-white transition-all">
-                        {problem.icon}
-                      </div>
-                      <h5 className="text-lg font-bold font-serif text-[#1A1A1A]">{problem.title}</h5>
+                  다국어 번역 대표 사례
+                </h4>
+                <div className="space-y-6">
+                  {representativeTranslations.map((item, idx) => (
+                    <div key={idx} className="p-8 border border-gray-100 bg-white hover:border-[#8C2323]/20 transition-all">
+                      <div className="text-[11px] font-bold text-[#8C2323] uppercase tracking-[0.2em] mb-2">{item.lang}</div>
+                      <div className="text-lg font-serif font-bold text-[#1A1A1A] mb-2">{item.work}</div>
+                      <div className="text-sm text-gray-400 mb-4 font-medium">번역자: {item.scholar}</div>
+                      <p className="text-sm text-gray-600 font-light leading-relaxed">{item.desc}</p>
                     </div>
-                    <p className="text-gray-500 text-sm leading-relaxed font-light pl-14">
-                      {problem.desc}
-                    </p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
+
+              {/* Challenges Section */}
+              <div id="challenges">
+                <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
+                  <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
+                    <AlertCircle className="w-5 h-5 -rotate-45" />
+                  </div>
+                  해결해야 할 도전 과제
+                </h4>
+                <div className="space-y-4">
+                  {problems.map((problem, index) => (
+                    <div key={index} className="p-8 border border-gray-100 bg-white group hover:border-[#8C2323]/30 transition-all">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-10 h-10 bg-gray-50 flex items-center justify-center group-hover:bg-[#8C2323] group-hover:text-white transition-all">
+                          {problem.icon}
+                        </div>
+                        <h5 className="text-lg font-bold font-serif text-[#1A1A1A]">{problem.title}</h5>
+                      </div>
+                      <p className="text-gray-500 text-sm leading-relaxed font-light pl-14">
+                        {problem.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
