@@ -291,59 +291,60 @@ export function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
                {/* Silok Card */}
+               {/* Silok Card */}
                <motion.div 
                  initial={{ opacity: 0, y: 20 }} 
                  whileInView={{ opacity: 1, y: 0 }} 
-                 className="group relative bg-white border border-gray-100 p-10 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden flex flex-col min-h-[600px]"
+                 className="group relative bg-[#8C2323] p-10 shadow-xl hover:shadow-2xl transition-all duration-500 text-white overflow-hidden flex flex-col min-h-[600px]"
                >
                   {/* Background Decoration */}
-                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-15 transition-opacity z-0 pointer-events-none">
-                    <span className="text-[10rem] font-serif font-black text-[#8C2323] leading-none">實錄</span>
+                  <div className="absolute top-0 right-0 p-4 opacity-15 group-hover:opacity-25 transition-opacity z-0 pointer-events-none">
+                    <span className="text-[10rem] font-serif font-black text-white leading-none">實錄</span>
                   </div>
                   
-                  <div className="relative z-10">
+                  <div className="relative z-10 flex-grow">
                     <div className="flex justify-between items-start mb-12">
-                      <div className="text-7xl font-serif font-black text-[#8C2323]/10 leading-none">01</div>
-                      <span className="text-xs px-3 py-1 bg-green-100 text-green-700 rounded-sm font-bold tracking-tighter shadow-sm">완역 완료 (유네스코 세계기록유산)</span>
+                      <div className="text-7xl font-serif font-black text-white/10 leading-none">01</div>
+                      <span className="text-xs px-3 py-1 bg-white/20 text-white rounded-sm font-bold tracking-tighter shadow-sm">완역 완료 (유네스코 세계기록유산)</span>
                     </div>
                     
-                    <h4 className="text-4xl md:text-5xl font-serif font-bold mb-10 text-[#1A1A1A]">조선왕조실록</h4>
+                    <h4 className="text-4xl md:text-5xl font-serif font-bold mb-10">조선왕조실록</h4>
                     
-                    <ul className="space-y-6 text-base text-gray-500 font-light leading-relaxed mb-12">
+                    <ul className="space-y-6 text-base text-white/80 font-light leading-relaxed mb-12">
                        <li className="flex gap-4">
-                         <div className="w-1.5 h-1.5 rounded-full bg-[#8C2323] mt-2.5 shrink-0"></div>
+                         <div className="w-1.5 h-1.5 rounded-full bg-white mt-2.5 shrink-0"></div>
                          <span>왕이 사망한 뒤 편찬하는 공식 국가 기록으로, 태조부터 철종까지 472년간의 역사를 보존합니다.</span>
                        </li>
                        <li className="flex gap-4">
-                         <div className="w-1.5 h-1.5 rounded-full bg-[#8C2323] mt-2.5 shrink-0"></div>
+                         <div className="w-1.5 h-1.5 rounded-full bg-white mt-2.5 shrink-0"></div>
                          <span>사관이 작성한 사초를 바탕으로 편찬되었으며, 국왕조차 열람할 수 없었던 고도의 객관성을 유지합니다.</span>
                        </li>
                        <li className="flex gap-4">
-                         <div className="w-1.5 h-1.5 rounded-full bg-[#8C2323] mt-2.5 shrink-0"></div>
+                         <div className="w-1.5 h-1.5 rounded-full bg-white mt-2.5 shrink-0"></div>
                          <span>정치, 외교, 군사뿐 아니라 사회 전반의 세세한 생활상까지 기록된 세계 최대 규모의 단일 왕조 기록입니다.</span>
                        </li>
                     </ul>
 
                     {/* Image Gallery - Integrated below text */}
                     <div className="grid grid-cols-5 gap-4 mt-auto">
-                      <div className="col-span-3 h-32 overflow-hidden border border-gray-100 rounded-xs group-hover:border-[#8C2323]/20 transition-colors">
+                      <div className="col-span-3 h-32 overflow-hidden border border-white/10 rounded-xs group-hover:border-white/30 transition-colors">
                         <ImageWithFallback src={imgSilokBooks} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Silok Books" />
                       </div>
                       <div className="col-span-2 flex flex-col gap-3">
-                        <div className="flex-1 overflow-hidden border border-gray-100 rounded-xs">
+                        <div className="flex-1 overflow-hidden border border-white/10 rounded-xs">
                           <ImageWithFallback src={imgSilokIllust} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Scholars Illustration" />
                         </div>
-                        <div className="flex-1 overflow-hidden border border-gray-100 rounded-xs">
-                          <ImageWithFallback src={imgSilokText} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" alt="Silok Text" />
+                        <div className="flex-1 overflow-hidden border border-white/10 rounded-xs">
+                          <ImageWithFallback src={imgSilokText} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Silok Text" />
                         </div>
                       </div>
                     </div>
                   </div>
                   
                   {/* Subtle Credit */}
-                  <div className="mt-8 pt-6 border-t border-gray-50 flex justify-between items-center relative z-10">
-                    <span className="text-[10px] text-gray-300 font-medium tracking-widest uppercase">UNESCO World Heritage</span>
-                    <span className="text-[10px] text-gray-300 font-medium">ⓒ 한국학중앙연구원</span>
+                  <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center relative z-10">
+                    <span className="text-[10px] text-white/30 font-medium tracking-widest uppercase">UNESCO World Heritage</span>
+                    <span className="text-[10px] text-white/30 font-medium">ⓒ 한국학중앙연구원</span>
                   </div>
                </motion.div>
 
