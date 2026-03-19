@@ -19,6 +19,11 @@ const problems = [
     desc: "고전 번역 텍스트는 한국형 LLM의 학술적 가치와 문화적 정체성을 결정짓는 핵심 학습 데이터입니다.",
     icon: <Cpu className="w-5 h-5 text-[#8C2323]" />,
   },
+  {
+    title: "전문 인력의 고령화 현상",
+    desc: "난해한 초서체와 이두 등을 정확히 해독할 수 있는 최고급 번역 인력들이 빠르게 줄어들고 있습니다.",
+    icon: <AlertCircle className="w-5 h-5 text-[#8C2323]" />,
+  }
 ];
 
 const stats = [
@@ -217,31 +222,32 @@ export function ClassicStatus() {
                 </div>
               </div>
 
-              {/* Challenges Section */}
-              <div id="challenges">
-                <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
-                  <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
-                    <AlertCircle className="w-5 h-5 -rotate-45" />
-                  </div>
-                  해결해야 할 도전 과제
-                </h4>
-                <div className="space-y-4">
-                  {problems.map((problem, index) => (
-                    <div key={index} className="p-8 border border-gray-100 bg-white group hover:border-[#8C2323]/30 transition-all">
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-10 h-10 bg-gray-50 flex items-center justify-center group-hover:bg-[#8C2323] group-hover:text-white transition-all">
-                          {problem.icon}
-                        </div>
-                        <h5 className="text-lg font-bold font-serif text-[#1A1A1A]">{problem.title}</h5>
-                      </div>
-                      <p className="text-gray-500 text-sm leading-relaxed font-light pl-14">
-                        {problem.desc}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* END of Right Column Stack */}
+            </div>
+          </div>
 
+          {/* BELOW THE MAIN GRID: Challenges Section (4 Columns) */}
+          <div id="challenges" className="mt-40">
+            <h4 className="text-2xl font-bold mb-10 flex items-center gap-4 font-serif">
+              <div className="w-10 h-10 bg-[#8C2323] text-white flex items-center justify-center rotate-45 rounded-xs">
+                <AlertCircle className="w-5 h-5 -rotate-45" />
+              </div>
+              해결해야 할 도전 과제
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {problems.map((problem, index) => (
+                <div key={index} className="flex flex-col p-8 border border-gray-100 bg-white group hover:border-[#8C2323]/30 transition-all h-full shadow-sm hover:shadow-md">
+                  <div className="flex flex-col gap-5 mb-5">
+                    <div className="w-12 h-12 bg-gray-50 flex items-center justify-center group-hover:bg-[#8C2323] group-hover:text-white transition-all">
+                      {problem.icon}
+                    </div>
+                    <h5 className="text-[17px] font-bold font-serif text-[#1A1A1A] leading-snug">{problem.title}</h5>
+                  </div>
+                  <p className="text-gray-500 text-[13px] leading-relaxed font-light flex-1">
+                    {problem.desc}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
