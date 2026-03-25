@@ -16,7 +16,7 @@ import refMunhyang from "figma:asset/6bb9492dbf7256d33df567525763871f294c9689.pn
 
 // Reference images from prompt
 import imgHeritageDetails from "figma:asset/ab2a088ebeb75530a7d1549e2fdec5c0d91fd960.png";
-import imgScholarCases from "figma:asset/028700deb353cf72d4ae9927f091776671cb6df1.png";
+import imgScholarCases from "figma:asset/028700deb353cf72d4ae9927f091776671cb6df1-CgAEVFCt.jpg";
 import imgWhyImportant from "figma:asset/6e707165a4704e0053932b9351efd53723203c7e.png";
 
 // Silok related images
