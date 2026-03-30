@@ -3,6 +3,8 @@ import { SectionHeader } from "../components/SectionHeader";
 import { Mail, Phone, MapPin, Send, MessageCircle, HelpCircle, ChevronRight, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 const faqs = [
   {
     q: "AI 번역의 정확도는 어느 수준인가요?",
@@ -33,10 +35,24 @@ const faqs = [
 export function Support() {
   const [formState, setFormState] = useState({ name: "", email: "", contact: "", type: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      const res = await fetch(`${API_URL}/api/classic_inquiries`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formState),
+      });
+      if (!res.ok) throw new Error('서버 오류');
+      setSubmitted(true);
+    } catch {
+      alert('문의 접수에 실패했습니다. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -188,7 +204,7 @@ export function Support() {
                     type="submit"
                     className="w-full bg-[#8C2323] text-white py-6 rounded-[20px] font-bold text-lg hover:bg-[#6D1B1B] transition-all shadow-2xl shadow-[#8C2323]/30 flex items-center justify-center gap-3 transform hover:scale-[1.02]"
                   >
-                    문의 보내기 <ChevronRight className="w-5 h-5" />
+                    {submitting ? '접수 중...' : '문의 보내기'} {!submitting && <ChevronRight className="w-5 h-5" />}
                   </button>
                 </form>
               )}
