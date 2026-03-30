@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { SectionHeader } from "../components/SectionHeader";
 import { Mail, Phone, MapPin, Send, MessageCircle, HelpCircle, ChevronRight, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
